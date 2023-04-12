@@ -5,8 +5,8 @@ const myFunc = () => {
 };
 
 /**
- * How do we extract MyFuncReturn from myFunc?
+ * How do we extract MyFuncReturn from myFunc? 
  */
-type MyFuncReturn = unknown;
+type MyFuncReturn = typeof myFunc extends (...args: any) => infer R ? R : never;
 
 type tests = [Expect<Equal<MyFuncReturn, string>>];
