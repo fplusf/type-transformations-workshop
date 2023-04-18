@@ -8,22 +8,37 @@
  * Which is which?
  */
 
+// Discriminated union - union of objects with a common property
+// Used to model a sum type (e.g. a type that can be one of several different types)
 type A =
   | {
       type: "a";
-      a: string;
+      a: number;
     }
   | {
       type: "b";
-      b: string;
+      b: boolean;
     }
   | {
       type: "c";
       c: string;
     };
 
+const result = (a: A) => {
+  switch (a.type) {
+    case "a":
+      return a.a;
+    case "b":
+      return a.b;
+    case "c":
+      return a.c;
+  }
+}
+
+// Union
 type B = "a" | "b" | "c";
 
+// Enum
 enum C {
   A = "a",
   B = "b",
